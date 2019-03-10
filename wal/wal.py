@@ -71,7 +71,7 @@ class WAL :
             raise AppendError(f'{log_id} already in WAL')
         if self.commit_id != entry.parent_log_id :
             if entry.parent_log_id not in self.heads :
-                raise AppendError(f'Parent {parent_log_id} not in WAL')
+                raise AppendError(f'Parent {entry.parent_log_id} not in WAL')
 
         self.reverse_dependencies[entry.parent_log_id].append(entry.log_id)
 
